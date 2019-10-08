@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+
+	<!-- Layout page -->
+	<definition name="simple"
+		template="/WEB-INF/frontend/views/jsp/layouts/layout.jsp">
+		
+		<!-- Loaded header.jsp -->
+		<put-attribute name="header"
+			value="/WEB-INF/frontend/views/jsp/header.jsp" />
+		
+		<!-- Loaded footer.jsp -->		
+		<put-attribute name="footer"
+			value="/WEB-INF/frontend/views/jsp/footer.jsp" />
+	</definition>
+
+	<!-- Index page -->	
+	<definition name="index" extends="simple">
+		<put-attribute name="title" value="Home page" />
+		
+		<!-- Loaded index.jps -->
+		<put-attribute name="content"
+			value="/WEB-INF/frontend/views/jsp/index.jsp" />
+	</definition>
+
+	<!-- Login page -->	
+	<definition name="login" extends="simple">
+		<put-attribute name="title" value="Login page" />
+		
+		<!-- Loaded login.jsp -->
+		<put-attribute name="content"
+			value="/WEB-INF/frontend/views/jsp/login.jsp" />
+	</definition>
+
+</tiles-definitions>

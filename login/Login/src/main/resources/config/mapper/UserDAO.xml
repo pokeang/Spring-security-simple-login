@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC 
+"-/mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.simple.web.dao.UserDAO">
+	<resultMap id="user" type="User">
+		<result property="userId" column="user_id" />
+		<result property="username" column="username" />
+		<result property="password" column="password" />
+		<result property="email" column="email" />
+		<result property="isActive" column="is_active" />
+		<result property="createdAt" column="user_created_at" />
+		<result property="updatedAt" column="user_updated_at" />
+		<association property="userRole" resultMap="userRole"/>
+	</resultMap>
+	
+	<resultMap id="userRole" type="UserRole">
+			<result property="roleId" column="role_id" />
+			<result property="role" column="role" />
+			<result property="createdAt" column="role_created_at" />
+			<result property="updatedAt" column="role_updated_at" />
+	</resultMap>
+	
+	<select id="getUsernameAndPassword" resultMap="user" resultType="User">
+		SELECT
+		users.id AS user_id,
+		users.username AS username,
+		users.password AS password,
+		users.email AS email,
+		users.is_active AS is_active,
+		users.created_at AS user_created_at,
+		users.updated_at AS user_updated_at,
+		roles.id AS role_id,
+		roles.role as role,
+		roles.created_at AS role_created_at,
+		roles.updated_at AS role_updated_at
+		FROM user_roles
+		INNER JOIN users ON user_roles.id = users.id
+		INNER JOIN roles ON user_roles.id = roles.id
+		WHERE username = #{username} AND password = #{password};
+	</select>
+
+	<select id="getUserList" resultMap="user" resultType="User">
+		SELECT
+		users.id AS user_id,
+		users.username AS username,
+		users.password AS password,
+		users.email AS email,
+		users.is_active AS is_active,
+		users.created_at AS user_created_at,
+		users.updated_at AS user_updated_at,
+		roles.id AS role_id,
+		roles.role as role,
+		roles.created_at AS role_created_at,
+		roles.updated_at AS role_updated_at
+		FROM user_roles
+		INNER JOIN users ON user_roles.id = users.id
+		INNER JOIN roles ON user_roles.id = roles.id;
+	</select>
+</mapper>

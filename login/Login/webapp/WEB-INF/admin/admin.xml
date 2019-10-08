@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+
+	<!-- Main Layout Page -->
+	<definition name="simple"
+		template="/WEB-INF/admin/views/jsp/layouts/layout.jsp">
+
+		<put-attribute name="header"
+			value="/WEB-INF/admin/views/jsp/header.jsp" />
+		
+		<put-attribute name="footer"
+			value="/WEB-INF/admin/views/jsp/footer.jsp" />
+	</definition>
+	
+	<!-- Deskboard page -->
+	<definition name="admin" extends="simple">
+		<put-attribute name="title" value="Admin Page" />
+		<put-attribute name="content"
+			value="/WEB-INF/admin/views/jsp/dashboard.jsp" />
+	</definition>
+	
+	<!-- Login page -->
+	<definition name="admin/login" extends="simple">
+		<put-attribute name="title" value="Login Page" />
+		<put-attribute name="content"
+			value="/WEB-INF/admin/views/jsp/login.jsp" />
+	</definition>	
+
+</tiles-definitions>

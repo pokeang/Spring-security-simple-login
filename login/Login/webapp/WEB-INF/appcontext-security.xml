@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:security="http://www.springframework.org/schema/security"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+        http://www.springframework.org/schema/security
+        http://www.springframework.org/schema/security/spring-security-3.2.xsd">  
+
+    <!-- Enabled auto generated login form -->
+    <security:http auto-config="true">
+    	<security:intercept-url pattern="/admin**" access="ROLE_ADMINISTRATOR" requires-channel="any"/>
+    </security:http>
+    
+    <!-- Memory authentication login -->
+<!--     <security:authentication-manager>
+    	<security:authentication-provider>
+    		<security:user-service>
+    			<security:user name="admin" password="123456" authorities="ROLE_ADMIN" />
+    		</security:user-service>
+    	</security:authentication-provider>
+    </security:authentication-manager> -->
+
+	<!-- JDBC DAO authentication login -->
+    <security:authentication-manager>
+        <security:authentication-provider ref="authenticationProvider"/>
+    </security:authentication-manager>
+
+    <!-- Instantiated UserAuthentication -->
+    <bean id="authenticationProvider" class="com.simple.web.config.UserAuthentication"/>
+</beans>
