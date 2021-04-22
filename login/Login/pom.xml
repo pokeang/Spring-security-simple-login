@@ -9,7 +9,7 @@
 		<spring-framework.version>4.0.6.RELEASE</spring-framework.version>
 		<spring-security.version>3.2.5.RELEASE</spring-security.version>
 		<mysql-connector-java.version>5.1.32</mysql-connector-java.version>
-		<mybatis.version>3.2.7</mybatis.version>
+		<mybatis.version>3.5.6</mybatis.version>
 		<mybatis-spring.version>1.2.2</mybatis-spring.version>
 		<javax-servlet.version>3.1.0</javax-servlet.version>
 		<jstl.version>1.2</jstl.version>
